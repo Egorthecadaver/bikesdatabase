@@ -9,6 +9,6 @@
 <p>Цена: {{ $bike->price_per_hour }} ₽/час</p>
 <p>Статус: {{ $bike->is_available ? 'Доступен' : 'Занят' }}</p>
 
-<a href="{{ route('bike.index') }}">Назад</a>
+<a href="{{ route('bikes.index') }}">Назад</a>
 </body>
 </html>

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Bike extends Model
 {
+    const TYPE_BMX = 2;
+    const MIN_ADMIN_PRICE = 500;
     protected $fillable = ['model', 'bike_type_id', 'is_available', 'price_per_hour'];
 
     public function type(): BelongsTo
@@ -19,4 +21,11 @@ class Bike extends Model
         return $this->belongsToMany(User::class, 'rentals')
             ->withPivot(['start_time', 'end_time', 'status']);
     }
+
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class);
+    }
+
+
 }
