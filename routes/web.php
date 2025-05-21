@@ -33,3 +33,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/error', function () {return view('error');})->name('error');
 Route::get('/error', function () {return view('error', ['message' => session('message')]);});
 Route::get('/bikes', [BikeController::class, 'index'])->name('bikes.index');
+Route::resource('bikes', BikeController::class);
+Route::resource('users', UserController::class)->middleware('auth');
+Route::get('/', function () {return view('welcome');})->name('home');
+Route::resource('bike_type', BikeTypeController::class)->except(['show']);
+Route::get('bike_type/{id}', [BikeTypeController::class, 'show'])->name('bike_type.show');
