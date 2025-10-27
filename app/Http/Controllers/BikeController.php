@@ -89,8 +89,9 @@ class BikeController extends Controller
     public function destroy(Bike $bike)
     {
         if (Gate::none(['delete-500-bike', 'delete-available-bike'], $bike)) {
-            return redirect('/error')->with('message',
-                'У вас нет прав на удаление ');
+            //return  redirect('/error')->with('message',
+              //  'У вас нет прав на удаление ');
+            return back()->with('error', 'У вас нет прав на удаление');
         }
 
         $bike->delete();
